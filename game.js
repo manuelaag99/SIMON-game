@@ -22,34 +22,38 @@ $(".row .btn").click(function() {
 })
 
 function compareLists() {
-    for (i = 1; i < gamePattern.length+1; i++) {
+    counter = 0;
+    for (i=1; i < gamePattern.length+1; i++) {
         if (userClickedPattern[i] === gamePattern[i]) {
-            console.log("same")
-            setTimeout(function() {
-                nextSequence();
-            }, 800);
-        } else {
-            console.log("different");
-            setTimeout(function() { //calls a function that adds a timed response 
-                wrongChoiceAnimation();//simulates the button being un-pressed 
-            }, 500)
-            gameOver = true
-            setTimeout(function() { //calls a function that adds a timed response 
-                startOver(); 
-            }, 1000)
-        }
+            counter++;
+        }; 
+    }
+    if (counter === gamePattern.length) {
+        setTimeout(function() {
+            nextSequence();
+        }, 800);
+    } else {
+        setTimeout(function() { //calls a function that adds a timed response 
+            wrongChoiceAnimation();//simulates the button being un-pressed 
+        }, 500);
+        //gameOver = true
+        setTimeout(function() { //calls a function that adds a timed response 
+            startOver(); 
+        }, 1000);
     }
 }
 
 function nextSequence() { 
-    //level++;
-    console.log(level);
-    $("#level-title").text("Level " + level + "!");
-    gameChoice();
+    level++; //raises the level by 1
+    $("#level-title").text("Level " + level + "!"); //changes the HTML page title according to the level 
+    setTimeout(function() { //calls a function that adds a timed response 
+        gameChoice(); 
+    }, 500);
 }
 
 function gameChoice() { //this function generates a random choice for the game, selects it, and stores it 
     var randomNumber = Math.floor((Math.random()*4)); //generates random number 
+    console.log(randomNumber)
     var randomChosenColor = buttonColors[randomNumber]; //assigns color value from the array, based on the number 
     console.log(randomChosenColor); //logs color, just to check 
     gamePattern.push(randomChosenColor); //adds to array 
@@ -71,7 +75,7 @@ function simonSounds(input) { //this function creates and play a sound file
 
 function wrongChoiceAnimation() {
     simonSounds("wrong");
-    $("#level-title").text("Wrong! Game Over");
+    $("#level-title").text("Wrong! Game Over. Press any key to restart.");
     $("body").addClass("game-over");
     setTimeout(function() { 
         $("body").removeClass("game-over"); 
@@ -82,5 +86,5 @@ function startOver() {
     gamePattern = [];
     userClickedPattern = [];
     level = 0;
-    gameOver = false;
+    gameOver = true;
 }
