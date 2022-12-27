@@ -6,12 +6,9 @@ var userClickedPattern = []; //this third array stores the order of colors the u
 let gameOver = true;
 
 //this section ahead lets the user initialize the game, and calls
-$(document).keydown(function() {
+$(document).keypress(function() {
     if (gameOver === true) {
-        level = level + 1;
-        console.log(level);
-        $("#level-title").text("Level " + level + "!");
-        gameChoice();
+        nextSequence();
         gameOver = false;
     }
 })
@@ -33,6 +30,13 @@ function compareLists() {
         }, 500)
         gameOver = true;
     }
+}
+
+function nextSequence() {
+    level = level + 1;
+    console.log(level);
+    $("#level-title").text("Level " + level + "!");
+    gameChoice();
 }
 
 //this function generates a random choice for the game, selects it, and stores it
@@ -58,9 +62,10 @@ function simonSounds(input) {
 }
 
 function wrongChoiceAnimation() {
+    simonSounds("wrong");
+    $("#level-title").text("Wrong! Game Over");
     $("body").addClass("game-over");
     setTimeout(function() { 
         $("body").removeClass("game-over"); 
     }, 200);
 }
-
