@@ -14,15 +14,28 @@ $(document).keypress(function() {
 })
 
 $(".row .btn").click(function() {
-    var userChosenColor = this.id; //the "buttonID" variable stores the particular identity of the clicked button
+    var userChosenColor = this.id; //the "buttonID" variable stores the particular identity of the clicked button 
     console.log(userChosenColor); //logs color, just to check 
     userClickedPattern.push(userChosenColor); //adds to array 
     buttonAnimation(userChosenColor); //plays animation and sound 
     if (userClickedPattern.length === gamePattern.length) {
         compareLists();
+    } else {
+        compareItems();
     }
 })
 
+function compareItems() {
+    //lastItem = userClickedPattern[userClickedPattern.length-1];
+    lastItemIndex = userClickedPattern.length-1;
+    //console.log(userClickedPattern)
+    console.log(lastItemIndex)
+    if (userClickedPattern[lastItemIndex] === gamePattern[lastItemIndex]) {
+        console.log("keep playing");
+    } else {
+        youLost();
+    }
+}
 
 function compareLists() {
     counter = 0;
