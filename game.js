@@ -24,7 +24,6 @@ $(".row .btn").click(function() {
 })
 
 
-
 function compareLists() {
     counter = 0;
     for (i=1; i < gamePattern.length+1; i++) {
@@ -37,13 +36,7 @@ function compareLists() {
             nextSequence();
         }, 800);
     } else {
-        setTimeout(function() { //calls a function that adds a timed response 
-            wrongChoiceAnimation();//simulates the button being un-pressed 
-        }, 250);
-        //gameOver = true
-        setTimeout(function() { //calls a function that adds a timed response 
-            startOver(); 
-        }, 1000);
+        youLost();
     }
 }
 
@@ -85,6 +78,16 @@ function wrongChoiceAnimation() {
     setTimeout(function() { 
         $("body").removeClass("game-over"); 
     }, 200);
+}
+
+function youLost() {
+    setTimeout(function() { //calls a function that adds a timed response 
+        wrongChoiceAnimation();//simulates the button being un-pressed 
+    }, 250);
+    //gameOver = true
+    setTimeout(function() { //calls a function that adds a timed response 
+        startOver(); 
+    }, 1000);
 }
 
 function startOver() {
