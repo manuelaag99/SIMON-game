@@ -22,25 +22,33 @@ $(".row .btn").click(function() {
 })
 
 function compareLists() {
-    if (userClickedPattern == gamePattern) {
-        console.log("same");
-    } else if (userClickedPattern != gamePattern) {
-        setTimeout(function() { //calls a function that adds a timed response 
-            wrongChoiceAnimation();//simulates the button being un-pressed 
-        }, 500)
-        gameOver = true;
+    for (i = 1; i < gamePattern.length+1; i++) {
+        if (userClickedPattern[i] === gamePattern[i]) {
+            console.log("same")
+            setTimeout(function() {
+                nextSequence();
+            }, 800);
+        } else {
+            console.log("different");
+            setTimeout(function() { //calls a function that adds a timed response 
+                wrongChoiceAnimation();//simulates the button being un-pressed 
+            }, 500)
+            gameOver = true
+            setTimeout(function() { //calls a function that adds a timed response 
+                startOver(); 
+            }, 1000)
+        }
     }
 }
 
-function nextSequence() {
-    level = level + 1;
+function nextSequence() { 
+    //level++;
     console.log(level);
     $("#level-title").text("Level " + level + "!");
     gameChoice();
 }
 
-//this function generates a random choice for the game, selects it, and stores it
-function gameChoice() {
+function gameChoice() { //this function generates a random choice for the game, selects it, and stores it 
     var randomNumber = Math.floor((Math.random()*4)); //generates random number 
     var randomChosenColor = buttonColors[randomNumber]; //assigns color value from the array, based on the number 
     console.log(randomChosenColor); //logs color, just to check 
@@ -49,14 +57,14 @@ function gameChoice() {
 }
 
 function buttonAnimation(color) {
-    simonSounds(color);
+    simonSounds(color); //calls the function to create and play a sound file 
     $("#" + [color]).addClass("pressed"); //simulates the corresponding button being pressed 
     setTimeout(function() { //calls a function that adds a timed response 
         $("#" + [color]).removeClass("pressed"); //simulates the button being un-pressed 
     }, 200); //this specifies that the button will be un-pressed after 200 milliseconds
 }
 
-function simonSounds(input) {
+function simonSounds(input) { //this function creates and play a sound file 
     var sound = new Audio("sounds/" + input + ".mp3"); //creates audio file based on the color 
     sound.play(); //plays corresponding audio file 
 }
@@ -68,4 +76,11 @@ function wrongChoiceAnimation() {
     setTimeout(function() { 
         $("body").removeClass("game-over"); 
     }, 200);
+}
+
+function startOver() {
+    gamePattern = [];
+    userClickedPattern = [];
+    level = 0;
+    gameOver = false;
 }
