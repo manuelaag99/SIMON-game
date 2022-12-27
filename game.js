@@ -35,7 +35,7 @@ function compareLists() {
     } else {
         setTimeout(function() { //calls a function that adds a timed response 
             wrongChoiceAnimation();//simulates the button being un-pressed 
-        }, 500);
+        }, 250);
         //gameOver = true
         setTimeout(function() { //calls a function that adds a timed response 
             startOver(); 
