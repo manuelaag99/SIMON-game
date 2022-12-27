@@ -17,7 +17,7 @@ $(".row .btn").click(function() {
     var userChosenColor = this.id; //the "buttonID" variable stores the particular identity of the clicked button 
     console.log(userChosenColor); //logs color, just to check 
     userClickedPattern.push(userChosenColor); //adds to array 
-    buttonAnimation(userChosenColor); //plays animation and sound 
+    buttonAnimation(userChosenColor); //plays animation and sound
     if (userClickedPattern.length === gamePattern.length) {
         compareLists();
     } else {
@@ -26,9 +26,7 @@ $(".row .btn").click(function() {
 })
 
 function compareItems() {
-    //lastItem = userClickedPattern[userClickedPattern.length-1];
     lastItemIndex = userClickedPattern.length-1;
-    //console.log(userClickedPattern)
     console.log(lastItemIndex)
     if (userClickedPattern[lastItemIndex] === gamePattern[lastItemIndex]) {
         console.log("keep playing");
@@ -39,12 +37,12 @@ function compareItems() {
 
 function compareLists() {
     counter = 0;
-    for (i=1; i < gamePattern.length+1; i++) {
+    for (i=0; i < gamePattern.length; i++) {
         if (userClickedPattern[i] === gamePattern[i]) {
             counter++;
         }; 
     }
-    if (counter === gamePattern.length) {
+    if (counter === gamePattern.length) { //there should be as many items as correct clicks (which the counter compiles)
         setTimeout(function() {
             nextSequence();
         }, 800);
