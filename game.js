@@ -18,8 +18,12 @@ $(".row .btn").click(function() {
     console.log(userChosenColor); //logs color, just to check 
     userClickedPattern.push(userChosenColor); //adds to array 
     buttonAnimation(userChosenColor); //plays animation and sound 
-    compareLists();
+    if (userClickedPattern.length === gamePattern.length) {
+        compareLists();
+    }
 })
+
+
 
 function compareLists() {
     counter = 0;
@@ -44,6 +48,7 @@ function compareLists() {
 }
 
 function nextSequence() { 
+    userClickedPattern = [];
     level++; //raises the level by 1
     $("#level-title").text("Level " + level + "!"); //changes the HTML page title according to the level 
     setTimeout(function() { //calls a function that adds a timed response 
