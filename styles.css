@@ -14,15 +14,25 @@ body {
   display: block;
   width: 50%;
   margin: auto;
+  height: 70vh;
+}
+
+.simon {
+  background-color: #06121f;
+  margin: auto;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
 }
 
 .btn {
-  margin: 25px;
+  margin: 5px;
   display: inline-block;
-  height: 180px;
-  width: 180px;
+  height: 170px;
+  width: 170px;
   border: 10px solid black;
   border-radius: 20%;
+  cursor: pointer;
 }
 
 .game-over {
@@ -32,18 +42,48 @@ body {
 
 .red {
   background-color: red;
+  border-top-right-radius: 90%;
+  border-bottom-left-radius: 70%;
+
+}
+
+.red:hover {
+  background-color: rgb(255, 112, 112);
+  transition-duration: 0.5s;
 }
 
 .green {
   background-color: green;
+  border-top-left-radius: 90%;
+  border-bottom-right-radius: 70%;
+}
+
+.green:hover {
+  background-color: rgb(61, 202, 61);
+  transition-duration: 0.5s;
 }
 
 .blue {
   background-color: blue;
+  border-bottom-right-radius: 90%;
+  border-top-left-radius: 70%;
+}
+
+.blue:hover {
+  background-color: rgb(62, 62, 255);
+  transition-duration: 0.5s;
 }
 
 .yellow {
   background-color: yellow;
+  border-bottom-left-radius: 90%;
+  border-top-right-radius: 70%;
+}
+
+.yellow:hover {
+  background-color: rgb(255, 255, 152);
+  transition-duration: 0.5s;
+
 }
 
 .pressed {
