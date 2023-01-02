@@ -6,7 +6,8 @@ body {
 #level-title {
   font-family: 'Press Start 2P', cursive;
   font-size: 2.5rem;
-  margin:  4%;
+  margin: 4%;
+  margin-bottom: 20px;
   color: #FEF2BF;
 }
 
@@ -20,16 +21,22 @@ body {
 .simon {
   background-color: #06121f;
   margin: auto;
-  width: 70%;
+  width: 420px;
   aspect-ratio: 1;
   border-radius: 50%;
+  border: 9px solid black;
+}
+
+.rows {
+  padding-top: 7%;
 }
 
 .btn {
   margin: 5px;
+  padding: 0;
   display: inline-block;
-  height: 170px;
-  width: 170px;
+  height: 150px;
+  width: 150px;
   border: 10px solid black;
   border-radius: 20%;
   cursor: pointer;
@@ -90,3 +97,21 @@ body {
   box-shadow: 0 0 20px white;
   background-color: grey;
 }
+
+.center-button {
+  width: 150px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #06121f;
+  position: absolute;
+  bottom: 50%;
+  border: 9px solid black;
+  right: 300px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 95%;
+  }
+}
+
