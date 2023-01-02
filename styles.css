@@ -90,7 +90,6 @@ body {
 .yellow:hover {
   background-color: rgb(255, 255, 152);
   transition-duration: 0.5s;
-
 }
 
 .pressed {
@@ -99,14 +98,27 @@ body {
 }
 
 .center-button {
-  width: 150px;
+  width: 180px;
   aspect-ratio: 1;
   border-radius: 50%;
   background-color: #06121f;
-  position: absolute;
   bottom: 50%;
   border: 9px solid black;
-  right: 300px;
+  position: fixed;
+  left: 43%;
+  top: 36%;
+}
+
+.middle {
+  width: 180px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #06121f;
+  bottom: 50%;
+  border: 9px solid black;
+  position: absolute;
+  left: 43%;
+  top: 36%;
 }
 
 @media (max-width: 1200px) {
